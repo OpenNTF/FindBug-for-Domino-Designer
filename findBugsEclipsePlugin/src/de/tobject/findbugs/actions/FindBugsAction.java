@@ -120,13 +120,9 @@ public class FindBugsAction implements IObjectActionDelegate {
             IStructuredSelection sSelection = (IStructuredSelection) selection;
 
             dialogAlreadyShown = false;
-            System.out.println("Befor getResourcePerProject");
             Map<IProject, List<WorkItem>> projectMap = ResourceUtils.getResourcesPerProject(sSelection);
-            System.out.println("After ");
             for (Map.Entry<IProject, List<WorkItem>> e : projectMap.entrySet()) {
-                System.out.println("work ..." + e.getKey());
                 work(targetPart, e.getKey(), e.getValue());
-                System.out.println("work done.");
             }
             targetPart = null;
             selection = null;
