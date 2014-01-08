@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="biz.webgate.dde.findbugs"
+      label="Findbugs for Domino Designer"
+      version="1.0.0.qualifier"
+      provider-name="WebGate Consulting AG">
+
+   <description url="http://www.openntf.org/internal/home.nsf/project.xsp?action=openDocument&amp;name=FindBugs%20for%20DominoDesigner">
+      This feature is a wrapper for the FindBugs plugin to install into the Domino Designer
+   </description>
+
+   <copyright>
+      FindBugs (c) 2006-2011, University of Maryland,
+      Domino Designer Integration (c) 2014, Christian Guedemann
+   </copyright>
+
+   <license url="http://www.gnu.org/licenses/lgpl.html">
+      FindBugs for Domino Designer is free software distributed under the terms of the Lesser GNU Public License.
+  http://www.gnu.org/licenses/lgpl.html
+   </license>
+
+   <requires>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.ant.core"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.jdt.launching"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.team.ui"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.ui.navigator.resources"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="org.eclipse.ui.views.properties.tabbed"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+   </requires>
+
+   <plugin
+         id="edu.umd.cs.findbugs.plugin.eclipse"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>
