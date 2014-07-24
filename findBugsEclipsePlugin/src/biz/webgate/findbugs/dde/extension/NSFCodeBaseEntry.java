@@ -40,6 +40,7 @@ import edu.umd.cs.findbugs.io.IO;
 public class NSFCodeBaseEntry implements ICodeBaseEntry {
 
     public static final String WEB_CONTENT_WEB_INF_CLASSES = "WebContent\\WEB-INF\\classes";
+    public static final String WEBSERVICE_CLASSES = "bin";
 
     private final IFile m_ResourceFile;
 
@@ -56,11 +57,21 @@ public class NSFCodeBaseEntry implements ICodeBaseEntry {
 
     @Override
     public String getResourceName() {
+        String strResult=null;
         String strPath = m_Folder.getFullPath().toOSString();
-        int nPos = strPath.indexOf(WEB_CONTENT_WEB_INF_CLASSES) + WEB_CONTENT_WEB_INF_CLASSES.length() + 1;
-        strPath = strPath.substring(nPos);
-        strPath = strPath.replaceAll("\\\\", "/");
-        return strPath + "/" + m_ResourceFile.getName();
+        if (strPath.contains(WEB_CONTENT_WEB_INF_CLASSES)){
+            int nPos = strPath.indexOf(WEB_CONTENT_WEB_INF_CLASSES) + WEB_CONTENT_WEB_INF_CLASSES.length() + 1;
+            strPath = strPath.substring(nPos);
+            strPath = strPath.replaceAll("\\\\", "/");
+            strResult = strPath + "/" + m_ResourceFile.getName();
+        }
+        else {
+            int nPos = strPath.indexOf(WEBSERVICE_CLASSES) + WEBSERVICE_CLASSES.length() + 1;
+            strPath = strPath.substring(nPos);
+            strPath = strPath.replaceAll("\\\\", "/");
+            strResult = strPath + "/" + m_ResourceFile.getName();
+        }
+        return strResult;
     }
 
     @Override
