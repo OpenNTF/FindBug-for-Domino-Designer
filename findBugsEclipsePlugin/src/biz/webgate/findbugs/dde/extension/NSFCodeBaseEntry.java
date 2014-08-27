@@ -59,6 +59,7 @@ public class NSFCodeBaseEntry implements ICodeBaseEntry {
     public String getResourceName() {
         String strResult=null;
         String strPath = m_Folder.getFullPath().toOSString();
+
         if (strPath.contains(WEB_CONTENT_WEB_INF_CLASSES)){
             int nPos = strPath.indexOf(WEB_CONTENT_WEB_INF_CLASSES) + WEB_CONTENT_WEB_INF_CLASSES.length() + 1;
             strPath = strPath.substring(nPos);
@@ -67,9 +68,15 @@ public class NSFCodeBaseEntry implements ICodeBaseEntry {
         }
         else {
             int nPos = strPath.indexOf(WEBSERVICE_CLASSES) + WEBSERVICE_CLASSES.length() + 1;
-            strPath = strPath.substring(nPos);
-            strPath = strPath.replaceAll("\\\\", "/");
-            strResult = strPath + "/" + m_ResourceFile.getName();
+            if (nPos < strPath.length()) {
+                strPath = strPath.substring(nPos);
+                strPath = strPath.replaceAll("\\\\", "/");
+                strResult = strPath + "/" + m_ResourceFile.getName();
+            }
+            else {
+                strResult = m_ResourceFile.getName();
+            }
+
         }
         return strResult;
     }
