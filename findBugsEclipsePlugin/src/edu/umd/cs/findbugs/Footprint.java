@@ -26,10 +26,10 @@ import java.util.List;
 
 /**
  * Class to maintain a snapshot of a processes's time and memory usage.
- * 
+ *
  * This uses some JDK 1.5 APIs so must be careful that it doesn't cause any harm
  * when run from 1.4.
- * 
+ *
  * @see FindBugs
  * @author Brian Cole
  */
@@ -161,9 +161,11 @@ public class Footprint {
                 try {
                     java.lang.management.MemoryUsage memUsage = mpBean.getPeakUsage();
                     if (memUsage != null)
+                     {
                         sum += memUsage.getUsed(); // or getCommitted()
                     // System.out.println(mpBean.getType()+", "+mpBean.getName()+", "+memUsage.getUsed());
                     // System.out.println("Memory type="+mpBean.getType()+", Pool name="+mpBean.getName()+", Memory usage="+mpBean.getPeakUsage());
+                    }
                 } catch (RuntimeException e) {
                     assert true;
                     // AnalysisContext.logError("Error getting peak usage", e);
@@ -189,7 +191,7 @@ public class Footprint {
         // OperatingSystemMXBean is not accessible due to restriction on
         // required library classes.jar"
         // depending on the contents of the .classpath file.
-        com.sun.management.OperatingSystemMXBean sunBean = (com.sun.management.OperatingSystemMXBean) osBean;
+        com.ibm.lang.management.OperatingSystemMXBean sunBean = (com.ibm.lang.management.OperatingSystemMXBean) osBean;
 
         public long getProcessCpuTime() {
             return sunBean.getProcessCpuTime();

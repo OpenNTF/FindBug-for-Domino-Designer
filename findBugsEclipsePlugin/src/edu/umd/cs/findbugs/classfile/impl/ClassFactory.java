@@ -82,7 +82,9 @@ public class ClassFactory implements IClassFactory {
     public ICodeBaseLocator createFilesystemCodeBaseLocator(String pathName) {
         // Attempt to canonicalize the pathname.
         // It's not fatal if we can't.
-        if (pathName.toLowerCase().contains(".nsf")) {
+        if ( (pathName.toLowerCase().contains(".nsf") ||
+              pathName.toLowerCase().contains(".ntf") ) &&
+              !pathName.toLowerCase().contains(".jar")) {
             return new NSFCodeBaseLocator(pathName);
         }
         try {
